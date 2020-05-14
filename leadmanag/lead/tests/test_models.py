@@ -10,7 +10,7 @@ class LeadTestCase(TestCase):
         Lead.objects.create(
             name="Testudo",
             email="testanimal@gmail.com",
-            message="Arrombado corno preto"
+            message="Some random stuff"
         )
 
     def test_return_str(self):
