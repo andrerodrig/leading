@@ -2,6 +2,7 @@ import json
 from django.test import TestCase
 from django.urls import reverse
 from django.test import RequestFactory
+from django.contrib.auth.models import User
 
 from lead.models import Lead
 from lead.serializers import LeadSerializer
@@ -39,11 +40,14 @@ class LeadViewListTestCase(TestCase):
 class LeadViewCreateTestCase(TestCase):
 
     def setUp(self):
+        User.objects.create_user(
+            username='and', password='doidoido')
+
         self.factory = RequestFactory()
         self.new_lead = json.dumps({
             'name': 'Joao doido',
             'email': 'animal@gmail.com',
-            'message': 'contact-me para prazer'
+            'message': 'contact-me para prazer',
         })
 
     def test_create_returns_201(self):
